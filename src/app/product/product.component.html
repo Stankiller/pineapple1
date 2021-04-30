@@ -1,0 +1,23 @@
+<div>
+  <mat-carousel>
+    <mat-carousel-slide #matCarouselSlide *ngFor="let slide of slides; let i = index" [image]="slide.image" overlayColor="#00000040" [hideOverlay]="false">
+    </mat-carousel-slide>
+  </mat-carousel>
+</div>
+<div class="product">
+  <mat-grid-list cols="12" rowHeight="250px">
+    <mat-grid-tile *ngFor="let tile of tiles; index as productId" [colspan]="tile.cols" [rowspan]="tile.rows">
+      <mat-card class="card">
+        <img mat-card-image [src]="tile.photo">
+        <p><a [routerLink]="['/product-detail', productId]">品名:{{tile.text}}</a></p>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div class="bottom">
+  <h1>聯絡我們</h1>
+  <p>FB:xxxxx</p>
+  <p>地址:</p>
+  <p>聯絡人:</p>
+  <p>電話：xxxxxx</p>
+</div>

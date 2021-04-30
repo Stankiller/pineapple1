@@ -1,0 +1,13 @@
+.product{
+  margin-left: 30vh;
+  margin-right: 30vh;
+}
+.card{
+  max-width: 30vh;
+}
+.bottom{
+  text-align: center;
+  background-color: darkgray;
+  height: 200px;
+  max-width: 100%;
+}

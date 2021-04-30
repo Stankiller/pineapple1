@@ -1,0 +1,20 @@
+.login-form{
+  justify-items: center;
+  max-width: 80vh;
+  margin-left: 50vh;
+  margin-right: 50vh;
+  margin-top: 10vh;
+  background-color: rgb(255, 249, 255);
+  padding: 10vh;
+  padding-left: 20vh;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}

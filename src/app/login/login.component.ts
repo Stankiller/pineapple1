@@ -35,9 +35,37 @@ export class LoginComponent implements OnInit {
   login(): void{
     this.auth.loginWithEmail(this.email, this.password);
     this.router.navigateByUrl('');
-    // alert(this.checkForm.value);
+    this.clearErrorMessage();
+    if (this.validateForm(this.email, this.password)){
+      this.auth.loginWithEmail(this.email, this.password).then(() => {
+        alert('登入成功');
+        this.router.navigateByUrl('');
+      }).catch((error: any) => {
+        this.error = error;
+       });
+    }
   }
 
+  validateForm(email: string, password: string): boolean{
+    if (email.length === 0){
+      this.errorMessage = '請輸入 Email';
+      return false;
+    }else if (password.length === 0){
+      this.errorMessage = '請輸入密碼';
+      return false;
+    }else if (password.length < 8){
+      this.errorMessage = '密碼長度不可小於 8 碼';
+      return false;
+    }else{
+      this.errorMessage = '';
+      return true;
+    }
+  }
+
+  clearErrorMessage(): void{
+    this.errorMessage = '';
+    this.error = {name : '', message : ''};
+  }
   ngOnInit(): void{
   }
 

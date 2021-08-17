@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
   email = '';
   password = '';
   errorMessage = '';
-  error: {name: string, message: string} = {name: '', message: ''};
+  error: { name: string, message: string } = { name: '', message: '' };
 
   constructor(private afs: AngularFirestore, private auth: AuthService, private formbuilder: FormBuilder, private router: Router) {
     this.signupForm = this.formbuilder.group({
@@ -28,7 +28,7 @@ export class SignupComponent implements OnInit {
 
   clearErrorMessage(): void{
     this.errorMessage = '';
-    this.error = {name : '', message : ''};
+    this.error = { name: '', message: '' };
   }
 
   signup(): void{
@@ -37,8 +37,9 @@ export class SignupComponent implements OnInit {
       this.auth.registerWithEmail(this.email, this.password).then(() => {
         alert('註冊成功');
         this.router.navigateByUrl('');
-      }).catch(_error => {
-        this.error = _error;
+      }).catch((error: any) => {
+        this.error = error;
+        alert('a');
        });
     }
   }

@@ -17,6 +17,7 @@
         </mat-form-field>
       </p>
       <p *ngIf="errorMessage.length > 0" >{{errorMessage}}</p>
+      <p *ngIf="error.message.length > 0" class="text-danger">{{error.message}} </p>
       <button type="submit" class="navbar-button" mat-button [disabled]="!signupForm.valid">登入</button>
     </div>
   </form>

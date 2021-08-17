@@ -16,17 +16,16 @@ export class AuthService {
   }
 
   registerWithEmail(email: string, password: string): any{
-    this.afu.createUserWithEmailAndPassword(email, password).then((user) => {
+    return this.afu.createUserWithEmailAndPassword(email, password).then((user) => {
       this.authstate = user;
-      alert(this.authstate);
     }).catch(error => {
       console.log(error);
       throw error;
     });
   }
 
-  loginWithEmail(email: string, password: string): void{
-    this.afu.signInWithEmailAndPassword(email, password).then((user) => {
+  loginWithEmail(email: string, password: string): any{
+    return this.afu.signInWithEmailAndPassword(email, password).then((user) => {
       this.authstate = user;
     }).catch(error => {
       console.log(error);

@@ -14,8 +14,10 @@
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
-          </mat-form-field>
-        </p>
+        </mat-form-field>
+      </p>
+      <p *ngIf="errorMessage.length > 0" >{{errorMessage}}</p>
+      <p *ngIf="error.message.length > 0" class="text-danger">{{error.message}} </p>
       <button type="submit" class="navbar-button" mat-button [disabled]="!checkForm.valid">登入</button>
       <button type="submit" class="navbar-button" mat-button routerLink="/signup">註冊</button>
     </div>

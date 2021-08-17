@@ -17,8 +17,14 @@ import { ProductComponent } from './product/product.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LoginComponent } from './login/login.component';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
+import { SignupComponent } from './signup/signup.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { PageNoFoundComponent } from './page-no-found/page-no-found.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,9 @@ import {MatInputModule} from '@angular/material/input';
     ProductComponent,
     NavbarComponent,
     ProductDetailComponent,
-    LoginComponent
+    LoginComponent,
+    PageNoFoundComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +52,14 @@ import {MatInputModule} from '@angular/material/input';
     MatInputModule,
     RouterModule.forRoot([
       { path: '', component: ProductComponent },
-      { path: 'product-detail/:productId', component: ProductDetailComponent },
+      { path: 'product-detail/:id', component: ProductDetailComponent },
       { path: 'login', component: LoginComponent },
-    ])
+      { path: 'signup', component: SignupComponent },
+      { path: '**', component: PageNoFoundComponent },
+    ]),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

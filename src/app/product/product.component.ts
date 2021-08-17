@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { TileStyler } from '@angular/material/grid-list/tile-styler';
+import { product } from '../product';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { productObject } from '../productObject';
+import { ProductService } from '../product.service';
 
-export interface Tile {
-  photo: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -20,14 +21,24 @@ export class ProductComponent implements OnInit {
     {'image': 'https://images.unsplash.com/photo-1619029903335-d95dc6acab2d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3067&q=80'}
   ];
 
-  tiles: Tile[] = [
-    {text: 'One', cols: 4, rows: 2, photo: 'https://images.unsplash.com/photo-1619776391673-58f38f291197?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'},
-    {text: 'Two', cols: 4, rows: 2, photo: 'https://images.unsplash.com/photo-1619776391673-58f38f291197?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'},
-    {text: 'Three', cols: 4, rows: 2, photo: 'https://images.unsplash.com/photo-1619776391673-58f38f291197?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'},
-  ];
-  constructor() { }
+  // product$!: Observable<productObject[]>;
+  // selectedId = 0;
+  product = product;
+  products: productObject[] = [];
+
+  constructor( private route: ActivatedRoute, private service: ProductService ) { }
 
   ngOnInit(): void {
+    // this.product$ = this.route.paramMap.pipe(
+    //  switchMap((params => {
+    //    this.selectedId = parseInt(params.get('id')!, 10);
+    //    return this.service.getProduct;
+    //  })
+    // ));
+    this.getProduct();
   }
-
+  getProduct(): void {
+    this.service.getProduct()
+    .subscribe(products => this.products = products);
+  }
 }

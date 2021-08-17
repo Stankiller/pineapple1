@@ -1,3 +1,23 @@
-<div class="introduction">
-
+<!--
+<div class="condtainer" *ngIf="product$ | async as product">
+  <div></div>
+  <div class="item1"><img [src]="product.photo"></div>
+  <div class="item2">
+    <p>品名：{{product.text}}</p>
+    <p>描述：</p>
+    <p>數量：<input type="text" value="數量"></p>
+    <button mat-button>送出</button>
+  </div>
 </div>
+-->
+<mat-grid-list cols="2" rowHeight="1:1" *ngIf="product">
+  <mat-grid-tile colspan="1" rowspan="1"><img class="pic" [src]="product.photo"></mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    <div>
+    <p>品名：{{product.text}}</p>
+    <p>描述：</p>
+    <mat-form-field class="qty"><mat-label>數量：</mat-label><input matInput type="text"></mat-form-field>
+    <button mat-button>送出</button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

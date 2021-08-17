@@ -1,5 +1,5 @@
 <div class="login-form">
-  <form [formGroup]="checkForm" novalidate (ngSubmit)="login()">
+  <form [formGroup]="signupForm" novalidate (ngSubmit)="signup()">
     <div>
       <p>
         <mat-form-field appearance="fill">
@@ -14,10 +14,10 @@
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
-          </mat-form-field>
-        </p>
-      <button type="submit" class="navbar-button" mat-button [disabled]="!checkForm.valid">登入</button>
-      <button type="submit" class="navbar-button" mat-button routerLink="/signup">註冊</button>
+        </mat-form-field>
+      </p>
+      <p *ngIf="errorMessage.length > 0" >{{errorMessage}}</p>
+      <button type="submit" class="navbar-button" mat-button [disabled]="!signupForm.valid">登入</button>
     </div>
   </form>
 </div>

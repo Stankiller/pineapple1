@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "pineapple-d8234": {
+      "hosting": {
+        "pineapple1": [
+          "pineapple-d8234"
+        ]
+      }
+    }
+  }
+}

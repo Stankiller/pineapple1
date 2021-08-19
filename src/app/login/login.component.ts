@@ -33,8 +33,6 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void{
-    this.auth.loginWithEmail(this.email, this.password);
-    this.router.navigateByUrl('');
     this.clearErrorMessage();
     if (this.validateForm(this.email, this.password)){
       this.auth.loginWithEmail(this.email, this.password).then(() => {

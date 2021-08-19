@@ -25,6 +25,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     ProductDetailComponent,
     LoginComponent,
     PageNoFoundComponent,
-    SignupComponent
+    SignupComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
       { path: 'product-detail/:id', component: ProductDetailComponent },
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
+      { path: 'cart', component: CartComponent },
       { path: '**', component: PageNoFoundComponent },
     ]),
     AngularFireModule.initializeApp(environment.firebase),

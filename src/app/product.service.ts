@@ -12,16 +12,18 @@ export class ProductService {
   constructor() { }
 
   getProduct(): Observable<productObject[]> {
+    // tslint:disable-next-line: no-shadowed-variable
     const productObject = of(product);
     return productObject;
   }
 
-  getProductDetail(id: number) {
+  getProductDetail(id: number): any{
+    // tslint:disable-next-line: no-non-null-assertion
     const productdetail = product.find(h => h.id === id)!;
     return of(productdetail);
-    //return this.getProduct().pipe(
+    // return this.getProduct().pipe(
       // (+) before `id` turns the string into a number
-      //map((products: productObject[]) => products.find(products => products.id === +id)!)
-    //);
+      // map((products: productObject[]) => products.find(products => products.id === +id)!)
+    // );
   }
 }

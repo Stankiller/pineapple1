@@ -17,7 +17,7 @@
     <p>品名：{{product.text}}</p>
     <p>描述：</p>
     <mat-form-field class="qty"><mat-label>數量：</mat-label><input matInput type="text"></mat-form-field>
-    <button mat-button>送出</button>
+    <button mat-button (click)="addToCart(product)">送出</button>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

@@ -1,6 +1,4 @@
 .product{
-  margin-left: 5%;
-  margin-right: 5%;
   text-align: center;
 }
 .product img{
@@ -14,6 +12,6 @@
 .bottom{
   text-align: center;
   background-color: darkgray;
-  height: 200px;
+  height: 20%;
   max-width: 100%;
 }

@@ -26,6 +26,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { CartComponent } from './cart/cart.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { CartComponent } from './cart/cart.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

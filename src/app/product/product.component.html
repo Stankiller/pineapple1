@@ -5,14 +5,12 @@
   </mat-carousel>
 </div>
 <div class="product">
-  <mat-grid-list cols="12" rowHeight="400px">
+  <mat-grid-list cols="12" rowHeight="1:6">
     <mat-grid-tile *ngFor="let products of product" [colspan]="products.cols" [rowspan]="products.rows">
-      <!--<mat-card class="card">-->
       <div>
         <img mat-card-image [src]="products.photo">
         <p><a routerLink="/product-detail/{{products.id}}">品名:{{products.text}}</a></p>
       </div>
-        <!--</mat-card>-->
     </mat-grid-tile>
   </mat-grid-list>
 </div>

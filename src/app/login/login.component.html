@@ -1,29 +1,33 @@
-<div class="login-form">
-  <form [formGroup]="checkForm" novalidate (ngSubmit)="login()">
-    <div>
-      <p>
-        <mat-form-field appearance="fill">
-          <mat-label>帳號</mat-label>
-          <input matInput type="text" formControlName="email" class="form-control" [(ngModel)]="email">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="fill">
-          <mat-label>密碼</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control" [(ngModel)]="password">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-      </p>
-      <p *ngIf="errorMessage.length > 0" >{{errorMessage}}</p>
-      <p *ngIf="error.message.length > 0" class="text-danger">{{error.message}} </p>
-      <button type="submit" class="navbar-button" mat-button [disabled]="!checkForm.valid">登入</button>
-      <button type="submit" class="navbar-button" mat-button routerLink="/signup">註冊</button>
-    </div>
-  </form>
+<div class="container">
+  <div class="login-form">
+    <form class="form" [formGroup]="checkForm" novalidate (ngSubmit)="login()">
+      <div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>帳號</mat-label>
+            <input matInput type="text" formControlName="email" class="form-control" [(ngModel)]="email">
+            <button mat-icon-button matSuffix>
+              <mat-icon></mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>密碼</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control" [(ngModel)]="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <p *ngIf="errorMessage.length > 0" >{{errorMessage}}</p>
+        <p *ngIf="error.message.length > 0" class="text-danger">{{error.message}} </p>
+        <button type="submit" class="navbar-button" mat-button [disabled]="!checkForm.valid">登入</button>
+        <button type="submit" class="navbar-button" mat-button routerLink="/signup">註冊</button>
+      </div>
+    </form>
+  </div>
 </div>
-
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
 

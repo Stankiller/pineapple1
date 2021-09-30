@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-signup',
@@ -18,8 +19,10 @@ export class SignupComponent implements OnInit {
   password = '';
   errorMessage = '';
   error: { name: string, message: string } = { name: '', message: '' };
+  padding = '';
 
-  constructor(private afs: AngularFirestore, private auth: AuthService, private formbuilder: FormBuilder, private router: Router) {
+  constructor(private afs: AngularFirestore, private auth: AuthService, private formbuilder: FormBuilder,
+    private router: Router, private breakpointObserver: BreakpointObserver) {
     this.signupForm = this.formbuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -60,6 +63,13 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const isSmallScreen = this.breakpointObserver.isMatched('(max-width: 599px)');
+    console.log(isSmallScreen);
+    if(isSmallScreen === true){
+      this.padding = '2vh';
+    }else{
+      this.padding = '10vh'
+    }
   }
 
 }

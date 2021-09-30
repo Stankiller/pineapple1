@@ -1,9 +1,10 @@
 import { AuthService } from './../auth.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 export interface Item { name: string; }
 
@@ -22,8 +23,10 @@ export class LoginComponent implements OnInit {
   error: {name: string, message: string} = {name: '', message: ''};
   private itemsCollection: AngularFirestoreCollection<Item>;
   items: Observable<Item[]>;
+  padding = '';
 
-  constructor(private afs: AngularFirestore, private auth: AuthService, private formbuilder: FormBuilder, private router: Router) {
+  constructor(private afs: AngularFirestore, private auth: AuthService, private formbuilder: FormBuilder,
+    private router: Router, private breakpointObserver: BreakpointObserver) {
     this.itemsCollection = afs.collection<Item>('items');
     this.items = this.itemsCollection.valueChanges();
     this.checkForm = this.formbuilder.group({
@@ -65,6 +68,13 @@ export class LoginComponent implements OnInit {
     this.error = {name : '', message : ''};
   }
   ngOnInit(): void{
+    const isSmallScreen = this.breakpointObserver.isMatched('(max-width: 599px)');
+    console.log(isSmallScreen);
+    if(isSmallScreen === true){
+      this.padding = '2vh';
+    }else{
+      this.padding = '10vh'
+    }
   }
 
 }

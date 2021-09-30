@@ -1,20 +1,21 @@
+.container{
+  padding: 5vh;
+}
 .login-form{
-  justify-items: center;
-  max-width: 80vh;
-  margin-left: 50vh;
-  margin-right: 50vh;
-  margin-top: 10vh;
+  margin: auto;
   background-color: rgb(255, 249, 255);
-  padding: 10vh;
-  padding-left: 20vh;
   border-radius: 4px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(146, 144, 144, 0.2);
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-input.example-right-align::-webkit-outer-spin-button,
-input.example-right-align::-webkit-inner-spin-button {
-  display: none;
-}
-
-input.example-right-align {
-  -moz-appearance: textfield;
+.form{
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
